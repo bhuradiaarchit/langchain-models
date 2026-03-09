@@ -14,3 +14,8 @@ documents = [
 result = embedding.embed_documents(documents)
 
 print(str(result))
+
+#logic is same as embedding query but here 
+# we are passing a list of documents instead of a single query
+#  and the method used is embed_documents
+#  instead of embed_query

@@ -4,7 +4,7 @@ A comprehensive learning project demonstrating various LangChain models includin
 
 ## Overview
 
-This project explores different ways to use LangChain with various models from HuggingFace and OpenAI, covering:
+This project explores different ways to use LangChain with various models from HuggingFace, OpenAI, Anthropic, and Google, covering:
 - Large Language Models (LLMs)
 - Chat Models
 - Embedding Models
@@ -14,11 +14,11 @@ This project explores different ways to use LangChain with various models from H
 ## Features
 
 ✅ **LLM Models** - Text generation using various LLM endpoints  
-✅ **Chat Models** - Conversational AI using HuggingFace and OpenAI  
+✅ **Chat Models** - Conversational AI using OpenAI, Anthropic, Google, and HuggingFace  
 ✅ **Embedding Models** - Local and API-based text embeddings  
 ✅ **Document Similarity** - Semantic search using cosine similarity  
 ✅ **Local Inference** - Run models locally without API costs  
-✅ **API Integration** - OpenAI and HuggingFace API support  
+✅ **API Integration** - OpenAI, Anthropic, Google, and HuggingFace API support  
 
 ## Project Structure
 
@@ -27,12 +27,18 @@ langchain-models/
 ├── LLMs/
 │   └── 1_llm_demo.py              # Basic LLM demo
 ├── ChatModels/
+│   ├── 1_chatmodel_openai.py      # OpenAI chat model
+│   ├── 2_chatmodel_anthropic.py   # Anthropic chat model
+│   ├── 3_chatmodel_google.py      # Google chat model
 │   ├── 4_chatmodel_hf_api.py      # HuggingFace API chat model
 │   └── 5_chatmodel_hf_local.py    # Local HuggingFace chat model
 ├── EmbeddingModels/
+│   ├── 1_embedding_openai_query.py # OpenAI single query embeddings
+│   ├── 2_embedding_openai_docs.py  # OpenAI document list embeddings
 │   ├── 3_embedding_hf_local.py    # Local HuggingFace embeddings
 │   └── 4_document_similarity.py   # Semantic document search
 ├── requirements.txt               # Project dependencies
+├── test.py                        # Version check script
 ├── .env                           # Environment variables (not tracked)
 ├── .gitignore                     # Git ignore file
 └── README.md                      # This file
@@ -69,10 +75,52 @@ langchain-models/
    ```bash
    # Create .env file and add your API keys
    echo OPENAI_API_KEY=your_key_here > .env
+   echo ANTHROPIC_API_KEY=your_key_here >> .env
+   echo GOOGLE_API_KEY=your_key_here >> .env
    echo HUGGINGFACEHUB_API_TOKEN=your_key_here >> .env
    ```
 
 ## Usage
+
+### Run LLM Demo
+```bash
+python LLMs/1_llm_demo.py
+```
+
+### Run OpenAI Chat Model
+```bash
+python ChatModels/1_chatmodel_openai.py
+```
+
+### Run Anthropic Chat Model
+```bash
+python ChatModels/2_chatmodel_anthropic.py
+```
+
+### Run Google Chat Model
+```bash
+python ChatModels/3_chatmodel_google.py
+```
+
+### Run HuggingFace API Chat Model
+```bash
+python ChatModels/4_chatmodel_hf_api.py
+```
+
+### Run Local Chat Model
+```bash
+python ChatModels/5_chatmodel_hf_local.py
+```
+
+### Run OpenAI Query Embeddings
+```bash
+python EmbeddingModels/1_embedding_openai_query.py
+```
+
+### Run OpenAI Document Embeddings
+```bash
+python EmbeddingModels/2_embedding_openai_docs.py
+```
 
 ### Run Local Embedding Model
 ```bash
@@ -82,11 +130,6 @@ python EmbeddingModels/3_embedding_hf_local.py
 ### Run Document Similarity Search
 ```bash
 python EmbeddingModels/4_document_similarity.py
-```
-
-### Run Local Chat Model
-```bash
-python ChatModels/5_chatmodel_hf_local.py
 ```
 
 ## Key Concepts
@@ -106,19 +149,24 @@ Large Language Models for text generation, summarization, translation, and more.
 ## Dependencies
 
 - `langchain` - Core LangChain framework
+- `langchain-core` - Core LangChain components
 - `langchain-openai` - OpenAI integration
+- `openai` - OpenAI Python client
+- `langchain-anthropic` - Anthropic integration
+- `langchain-google-genai` - Google Gemini integration
+- `google-generativeai` - Google Generative AI client
 - `langchain-huggingface` - HuggingFace integration
-- `sentence-transformers` - Local embedding models
-- `scikit-learn` - Cosine similarity calculations
-- `python-dotenv` - Environment variable management
-- `torch` - PyTorch for local model inference
 - `transformers` - HuggingFace transformers library
+- `huggingface-hub` - HuggingFace Hub client
+- `python-dotenv` - Environment variable management
+- `numpy` - Numerical computing
+- `scikit-learn` - Machine learning utilities
 
 See `requirements.txt` for all dependencies.
 
 ## Notes
 
-- ⚠️ **API Keys**: Keep `.env` file private and never commit it to GitHub
+- ⚠️ **API Keys**: Keep `.env` file private and never commit it to GitHub. Only add the API keys for the models you plan to use.
 - 💾 **Models**: First run will download models (~100-500MB depending on model)
 - 🔧 **Local Inference**: Requires significant RAM (8GB+) for larger models
 - 🚀 **Free Models**: Use local models to avoid API costs
@@ -128,7 +176,8 @@ See `requirements.txt` for all dependencies.
 - [LangChain Documentation](https://python.langchain.com/)
 - [HuggingFace Models](https://huggingface.co/models)
 - [OpenAI API](https://platform.openai.com/docs)
-- [Sentence Transformers](https://www.sbert.net/)
+- [Anthropic API](https://docs.anthropic.com/)
+- [Google AI Studio](https://aistudio.google.com/)
 
 ## Contributing
 
